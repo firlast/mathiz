@@ -13,5 +13,19 @@ setup(
     version='0.1.0',
     url='https://github.com/firlast/mathiz',
     packages=['mathiz'],
-    install_requires=['wsblib==0.4.0']
+    install_requires=['wsblib==0.4.0'],
+    keywords=['www', 'web', 'server', 'http', 'framework', 'wsblib'],
+    classifiers=[
+        'License :: OSI Approved :: BSD License',
+        'Development Status :: 3 - Alpha',
+        'Intended Audience :: Developers',
+        'Natural Language :: English',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python :: 3',
+        'Topic :: Internet :: WWW/HTTP :: HTTP Servers',
+        'Topic :: Internet :: WWW/HTTP :: WSGI'
+    ],
+    project_urls={
+        'License': 'https://github.com/firlast/mathiz/blob/master/LICENSE'
+    }
 )
