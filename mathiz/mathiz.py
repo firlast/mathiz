@@ -4,6 +4,7 @@ from threading import Thread
 from wsblib import route
 from wsblib import server
 from wsblib import request
+from wsblib import log
 
 from http_pyparser import response
 
@@ -27,6 +28,8 @@ class Mathiz:
         if result:
             _response, _request = result
             final_response = response.make_response(_response)
+
+            log.log_request(_response, _request)
 
             client.send_message(final_response)
             client.destroy()
