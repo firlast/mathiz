@@ -1,6 +1,7 @@
 from types import FunctionType
 
 from wsblib import route
+from wsblib import server
 
 
 class Mathiz:
@@ -14,3 +15,10 @@ class Mathiz:
             self._routes.append(_route)
 
         return decorator
+
+    def run(self, host: str = '127.0.0.1', port: int = 5500) -> None:
+        _server = server.Server()
+        _server.start(host, port)
+        
+        while True:
+            client = _server.wait_client()
