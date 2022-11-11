@@ -8,9 +8,9 @@ class Mathiz:
         self._routes = []
         self._errors_callback = []
 
-    def route(self, path: str, method: tuple = ('GET',)) -> FunctionType:
+    def route(self, path: str, methods: tuple = ('GET',)) -> FunctionType:
         def decorator(func):
-            _route = route.Route(func, path, method)
+            _route = route.Route(func, path, methods)
             self._routes.append(_route)
 
         return decorator
