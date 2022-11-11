@@ -35,8 +35,8 @@ class Mathiz:
             client.destroy()
 
     def run(self, host: str = '127.0.0.1', port: int = 5500) -> None:
-        print('Mathiz Framework started\n')
-        print('- Learn about Mathiz in https://github.com/firlast/mathiz')
+        print('Mathiz Framework started')
+        print(f'Creating web server in {host}:{port} address\n')
 
         _server = server.Server()
         _server.start(host, port)
@@ -45,6 +45,7 @@ class Mathiz:
             self._routes, self._errors_callback
         )
 
+        print('- Learn about Mathiz in https://github.com/firlast/mathiz')
         print(f'- \033[32mThe server is running at http://{host}:{port}\n\033[m')
 
         while True:
