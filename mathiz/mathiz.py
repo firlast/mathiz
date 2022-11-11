@@ -1,4 +1,5 @@
 from types import FunctionType
+from threading import Thread
 
 from wsblib import route
 from wsblib import server
@@ -40,3 +41,5 @@ class Mathiz:
         
         while True:
             client = _server.wait_client()
+            th = Thread(target=self._process, args=(client,))
+            th.start()
