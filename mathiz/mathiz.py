@@ -23,7 +23,7 @@ class Mathiz:
         return decorator
 
     def _process(self, client: server.Client) -> None:
-        result = self._process_request.process(client)
+        result = self._process_request.process(client, use_globals=True)
 
         if result:
             _response, _request = result
