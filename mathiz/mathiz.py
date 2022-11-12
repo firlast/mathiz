@@ -23,8 +23,8 @@ class Mathiz:
 
         return decorator
 
-    def _process(self, client: server.Client) -> None:
-        result = self._process_request.process(client, use_globals=True)
+    def _process(self, client: server.Client, use_globals: bool) -> None:
+        result = self._process_request.process(client, use_globals)
 
         if result:
             _response, _request = result
@@ -35,7 +35,7 @@ class Mathiz:
             client.send_message(final_response)
             client.destroy()
 
-    def run(self, host: str = '127.0.0.1', port: int = 5500) -> None:
+    def run(self, host: str = '127.0.0.1', port: int = 5500, use_globals: bool = True) -> None:
         print('Mathiz Framework started')
         print(f'Creating web server in {host}:{port} address...', end=' ')
 
@@ -62,7 +62,7 @@ class Mathiz:
         try:
             while True:
                 client = _server.wait_client()
-                th = Thread(target=self._process, args=(client,))
+                th = Thread(target=self._process, args=(client, use_globals))
                 th.start()
         except (KeyboardInterrupt, SystemExit, SystemError):
             print('\n\033[31mServer closed!\033[m')
