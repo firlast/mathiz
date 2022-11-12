@@ -53,6 +53,6 @@ class Mathiz:
                 client = _server.wait_client()
                 th = Thread(target=self._process, args=(client,))
                 th.start()
-        except KeyboardInterrupt:
+        except (KeyboardInterrupt, SystemExit, SystemError):
             print('\n\033[31mServer closed!\033[m')
             _server.destroy()
