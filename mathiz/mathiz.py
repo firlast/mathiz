@@ -1,3 +1,4 @@
+import sys
 from types import FunctionType
 from threading import Thread
 
@@ -36,10 +37,20 @@ class Mathiz:
 
     def run(self, host: str = '127.0.0.1', port: int = 5500) -> None:
         print('Mathiz Framework started')
-        print(f'Creating web server in {host}:{port} address\n')
+        print(f'Creating web server in {host}:{port} address...', end=' ')
 
         _server = server.Server()
-        _server.start(host, port)
+
+        try:
+            _server.start(host, port)
+        except OSError as err:
+            print(f'\033[31mFAILED\033[m')
+            if err.errno == 98:
+                print(f'\n\033[31mAddress already in use.\033[m')
+
+            sys.exit(1)
+        else:
+            print('\033[32mOK\033[m\n')
 
         self._process_request = request.ProcessRequest(
             self._routes, self._errors_callback
