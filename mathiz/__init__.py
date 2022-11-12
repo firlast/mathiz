@@ -1,5 +1,5 @@
-from wsblib.request import RequestData
 from http_pyparser.parser import HTTPData
+from wsblib.request import RequestData
 
 from .mathiz import Mathiz
 
