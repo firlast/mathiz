@@ -48,7 +48,11 @@ class Mathiz:
         print('- Learn about Mathiz in https://github.com/firlast/mathiz')
         print(f'- \033[32mThe server is running at http://{host}:{port}\n\033[m')
 
-        while True:
-            client = _server.wait_client()
-            th = Thread(target=self._process, args=(client,))
-            th.start()
+        try:
+            while True:
+                client = _server.wait_client()
+                th = Thread(target=self._process, args=(client,))
+                th.start()
+        except KeyboardInterrupt:
+            print('\n\033[31mServer closed!\033[m')
+            _server.destroy()
