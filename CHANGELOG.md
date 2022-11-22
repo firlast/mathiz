@@ -22,3 +22,11 @@ Update [WSBLib](https://github.com/firlast/wsblib) version and using globals var
 - [93631da](https://github.com/firlast/mathiz/commit/93631da): Using globals to provide request object;
 - [3a51ac3](https://github.com/firlast/mathiz/commit/3a51ac3): Creating `RequestData` instance in `__init__.py`;
 - [fd0bf8e](https://github.com/firlast/mathiz/commit/fd0bf8e): Handling `OSError` exception if the address is already in use;
+
+# 0.2.1
+
+Fix [WSBLib](https://github.com/firlast/wsblib) version in setup script.
+
+## Major commits
+
+- [3b8d65f](https://github.com/firlast/mathiz/commit/3b8d65f): Fix `wsblib` version in setup script.
