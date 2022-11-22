@@ -5,4 +5,4 @@ from .mathiz import Mathiz
 
 request = RequestData(HTTPData(), (), {})
 
-__version__ = '0.2.0'
+__version__ = '0.2.1'
