@@ -13,7 +13,7 @@ setup(
     version='0.2.1',
     url='https://github.com/firlast/mathiz',
     packages=['mathiz'],
-    install_requires=['wsblib==0.6.0'],
+    install_requires=['wsblib==0.7.0'],
     keywords=['www', 'web', 'server', 'http', 'framework', 'wsblib'],
     classifiers=[
         'License :: OSI Approved :: BSD License',
