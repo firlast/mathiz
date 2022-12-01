@@ -1,2 +1,2 @@
 http-pyparser==0.4.1
-wsblib==0.6.0
+wsblib==0.7.0
