@@ -22,6 +22,19 @@ class EncyptCookies:
 
         return encrypted_cookies
 
+    def decrypt_cookies(self, encrypted_cookies: dict) -> dict:
+        decrypted_cookies = {}
+
+        for name, value in encrypted_cookies.items():
+            decrypted_name = self._fernet.decrypt(name)
+            decrypted_value = self._fernet.encrypt(value)
+            decrypted_name = decrypted_name.decode()
+            decrypted_value = decrypted_value.decode()
+
+            decrypted_cookies[decrypted_name] = decrypted_value
+
+        return decrypted_cookies
+
     @staticmethod
     def _transform_key(key: str) -> bytes:
         key_hash = hashlib.md5(key.encode()).hexdigest()
