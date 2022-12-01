@@ -12,9 +12,9 @@ from http_pyparser import response
 
 class Mathiz:
     def __init__(self) -> None:
-        self._routes = []
-        self._errors_callback = []
         self._process_request: request.ProcessRequest = None
+        self._errors_callback = []
+        self._routes = []
 
     def route(self, path: str, methods: tuple = ('GET',)) -> FunctionType:
         def decorator(func):
