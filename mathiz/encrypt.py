@@ -4,7 +4,7 @@ from base64 import urlsafe_b64encode
 from cryptography.fernet import Fernet
 
 
-class EncyptCookies:
+class EncryptCookies:
     def __init__(self, secret_key: str) -> None:
         key = self._transform_key(secret_key)
         self._fernet = Fernet(key)
