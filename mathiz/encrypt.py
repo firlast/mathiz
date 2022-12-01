@@ -9,6 +9,19 @@ class EncyptCookies:
         key = self._transform_key(secret_key)
         self._fernet = Fernet(key)
 
+    def encrypt_cookies(self, cookies: dict) -> dict:
+        encrypted_cookies = {}
+
+        for name, value in cookies.items():
+            encrypted_name = self._fernet.encrypt(name.encode())
+            encrypted_value = self._fernet.encrypt(value.encode())
+            encrypted_name = encrypted_name.decode()
+            encrypted_value = encrypted_value.decode()
+
+            encrypted_cookies[encrypted_name] = encrypted_value
+
+        return encrypted_cookies
+
     @staticmethod
     def _transform_key(key: str) -> bytes:
         key_hash = hashlib.md5(key.encode()).hexdigest()
