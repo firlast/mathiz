@@ -30,3 +30,12 @@ Fix [WSBLib](https://github.com/firlast/wsblib) version in setup script.
 ## Major commits
 
 - [3b8d65f](https://github.com/firlast/mathiz/commit/3b8d65f): Fix `wsblib` version in setup script.
+
+# 0.2.2
+
+Update [WSBLib](https://github.com/firlast/wsblib) version.
+
+## Major commits
+
+- [4fba261](https://github.com/firlast/mathiz/commit/4fba261): Update `wsblib` version in setup script;
+- [6bfb7b9](https://github.com/firlast/mathiz/commit/6bfb7b9): Update project requirements.
