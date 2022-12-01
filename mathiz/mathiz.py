@@ -1,20 +1,22 @@
 import sys
-from types import FunctionType
 from threading import Thread
-
-from wsblib import route
-from wsblib import server
-from wsblib import request
-from wsblib import log
+from types import FunctionType
 
 from http_pyparser import response
+from wsblib import log, request, route, server
+
+from .encrypt import EncryptCookies
 
 
 class Mathiz:
-    def __init__(self) -> None:
+    def __init__(self, secret_key: str = None) -> None:
         self._process_request: request.ProcessRequest = None
+        self._encrypt_cookies = None
         self._errors_callback = []
         self._routes = []
+
+        if secret_key:
+            self._encrypt_cookies = EncryptCookies(secret_key)
 
     def route(self, path: str, methods: tuple = ('GET',)) -> FunctionType:
         def decorator(func):
