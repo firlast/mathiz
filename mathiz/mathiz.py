@@ -26,12 +26,13 @@ class Mathiz:
         return decorator
 
     def _process(self, client: server.Client, use_globals: bool) -> None:
-        result = self._process_request.process(client, use_globals)
+        request_processed = self._process_request.process(client)
 
-        if result:
-            _response, _request = result
+        if request_processed:
+            _request = request_processed.request
+            _response = request_processed.get_response(use_globals=use_globals)
 
-            if self._encrypt_cookies:
+            if self._encrypt_cookies and _response.cookies:
                 new_cookies = self._encrypt_cookies.encrypt_cookies(_response.cookies)
                 _response.cookies = new_cookies
 
