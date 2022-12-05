@@ -30,13 +30,20 @@ class Mathiz:
 
         if request_processed:
             _request = request_processed.request
+
+            if self._encrypt_cookies:
+                decrypted_cookies = self._encrypt_cookies.decrypt(_request.cookies)
+                _request.cookies = decrypted_cookies
+                request_processed.request = _request
+
             _response = request_processed.get_response(use_globals=use_globals)
 
             if self._encrypt_cookies and _response.cookies:
-                new_cookies = self._encrypt_cookies.encrypt_cookies(_response.cookies)
+                new_cookies = self._encrypt_cookies.encrypt(_response.cookies)
                 _response.cookies = new_cookies
 
             final_response = response.make_response(_response)
+
             log.log_request(_response, _request)
             client.send_message(final_response)
             client.destroy()
