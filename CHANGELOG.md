@@ -39,3 +39,21 @@ Update [WSBLib](https://github.com/firlast/wsblib) version.
 
 - [4fba261](https://github.com/firlast/mathiz/commit/4fba261): Update `wsblib` version in setup script;
 - [6bfb7b9](https://github.com/firlast/mathiz/commit/6bfb7b9): Update project requirements.
+
+# 0.3.0
+
+Adding `Mathiz.register_route` method, encrypt cookies data and update [WSBLib](https://github.com/firlast/wsblib) version.
+
+## Major commits
+
+- [73294bd](https://github.com/firlast/mathiz/commit/73294bd): Update project requirements;
+- [ba30772](https://github.com/firlast/mathiz/commit/ba30772): Adding `EncryptCookies` class;
+- [905d079](https://github.com/firlast/mathiz/commit/905d079): Create function to encrypt cookies;
+- [4bb03c2](https://github.com/firlast/mathiz/commit/4bb03c2): Create function to decrypt cookies;
+- [23481b3](https://github.com/firlast/mathiz/commit/23481b3): Encrypt cookies in `Mathiz._process` method;
+- [09ddd51](https://github.com/firlast/mathiz/commit/09ddd51): Updating requirements.txt;
+- [27a613f](https://github.com/firlast/mathiz/commit/27a613f): Removing empty dict from `RequestData` instance;
+- [377f4a3](https://github.com/firlast/mathiz/commit/377f4a3): Update wsblib version in setup script;
+- [0263f8c](https://github.com/firlast/mathiz/commit/0263f8c): Encrypt just cookie value;
+- [b7aa6b6](https://github.com/firlast/mathiz/commit/b7aa6b6): Decrypt received cookies;
+- [24555b6](https://github.com/firlast/mathiz/commit/24555b6): Creating `register_route` method to register routes.
