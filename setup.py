@@ -10,7 +10,7 @@ setup(
     description='Mathiz, a complete web framework',
     long_description=readme,
     long_description_content_type='text/markdown',
-    version='0.2.2',
+    version='0.3.0',
     url='https://github.com/firlast/mathiz',
     packages=['mathiz'],
     install_requires=['wsblib==1.1.3', 'cryptography==38.0.4'],
