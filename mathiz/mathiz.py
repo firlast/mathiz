@@ -1,37 +1,53 @@
 import sys
-from types import FunctionType
 from threading import Thread
-
-from wsblib import route
-from wsblib import server
-from wsblib import request
-from wsblib import log
+from types import FunctionType
 
 from http_pyparser import response
+from wsblib import log, request, route, server
+
+from .encrypt import EncryptCookies
 
 
 class Mathiz:
-    def __init__(self) -> None:
-        self._routes = []
-        self._errors_callback = []
+    def __init__(self, secret_key: str = None) -> None:
         self._process_request: request.ProcessRequest = None
+        self._encrypt_cookies = None
+        self._errors_callback = []
+        self._routes = []
+
+        if secret_key:
+            self._encrypt_cookies = EncryptCookies(secret_key)
+
+    def register_route(self, func: FunctionType, path: str, methods: tuple = ('GET',)) -> None:
+        _route = route.Route(func, path, methods)
+        self._routes.append(_route)
 
     def route(self, path: str, methods: tuple = ('GET',)) -> FunctionType:
         def decorator(func):
-            _route = route.Route(func, path, methods)
-            self._routes.append(_route)
+            self.register_route(func, path, methods=methods)
 
         return decorator
 
     def _process(self, client: server.Client, use_globals: bool) -> None:
-        result = self._process_request.process(client, use_globals)
+        request_processed = self._process_request.process(client)
 
-        if result:
-            _response, _request = result
+        if request_processed:
+            _request = request_processed.request
+
+            if self._encrypt_cookies:
+                decrypted_cookies = self._encrypt_cookies.decrypt(_request.cookies)
+                _request.cookies = decrypted_cookies
+                request_processed.request = _request
+
+            _response = request_processed.get_response(use_globals=use_globals)
+
+            if self._encrypt_cookies and _response.cookies:
+                new_cookies = self._encrypt_cookies.encrypt(_response.cookies)
+                _response.cookies = new_cookies
+
             final_response = response.make_response(_response)
 
             log.log_request(_response, _request)
-
             client.send_message(final_response)
             client.destroy()
 
