@@ -24,8 +24,7 @@ class Mathiz:
 
     def route(self, path: str, methods: tuple = ('GET',)) -> FunctionType:
         def decorator(func):
-            _route = route.Route(func, path, methods)
-            self._routes.append(_route)
+            self.register_route(func, path, methods=methods)
 
         return decorator
 
