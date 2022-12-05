@@ -19,12 +19,10 @@ class EncryptCookies:
         encrypted_cookies = {}
 
         for name, value in cookies.items():
-            encrypted_name = self._fernet.encrypt(name.encode())
             encrypted_value = self._fernet.encrypt(value.encode())
-            encrypted_name = encrypted_name.decode()
             encrypted_value = encrypted_value.decode()
-
-            encrypted_cookies[encrypted_name] = encrypted_value
+            encrypted_value = encrypted_value.replace('=', '')
+            encrypted_cookies[name] = encrypted_value
 
         return encrypted_cookies
 
@@ -32,11 +30,9 @@ class EncryptCookies:
         decrypted_cookies = {}
 
         for name, value in encrypted_cookies.items():
-            decrypted_name = self._fernet.decrypt(name.encode())
+            value += '=='
             decrypted_value = self._fernet.encrypt(value.encode())
-            decrypted_name = decrypted_name.decode()
             decrypted_value = decrypted_value.decode()
-
-            decrypted_cookies[decrypted_name] = decrypted_value
+            decrypted_cookies[name] = decrypted_value
 
         return decrypted_cookies
