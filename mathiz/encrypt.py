@@ -31,7 +31,7 @@ class EncryptCookies:
 
         for name, value in encrypted_cookies.items():
             value += '=='
-            decrypted_value = self._fernet.encrypt(value.encode())
+            decrypted_value = self._fernet.decrypt(value.encode())
             decrypted_value = decrypted_value.decode()
             decrypted_cookies[name] = decrypted_value
 
