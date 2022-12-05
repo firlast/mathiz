@@ -18,6 +18,10 @@ class Mathiz:
         if secret_key:
             self._encrypt_cookies = EncryptCookies(secret_key)
 
+    def register_route(self, func: FunctionType, path: str, methods: tuple = ('GET',)) -> None:
+        _route = route.Route(func, path, methods)
+        self._routes.append(_route)
+
     def route(self, path: str, methods: tuple = ('GET',)) -> FunctionType:
         def decorator(func):
             _route = route.Route(func, path, methods)
