@@ -15,7 +15,7 @@ class EncryptCookies:
         key_b64 = urlsafe_b64encode(key_hash.encode())
         return key_b64
 
-    def encrypt_cookies(self, cookies: dict) -> dict:
+    def encrypt(self, cookies: dict) -> dict:
         encrypted_cookies = {}
 
         for name, value in cookies.items():
@@ -28,7 +28,7 @@ class EncryptCookies:
 
         return encrypted_cookies
 
-    def decrypt_cookies(self, encrypted_cookies: dict) -> dict:
+    def decrypt(self, encrypted_cookies: dict) -> dict:
         decrypted_cookies = {}
 
         for name, value in encrypted_cookies.items():
