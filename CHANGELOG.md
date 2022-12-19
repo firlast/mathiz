@@ -57,3 +57,12 @@ Adding `Mathiz.register_route` method, encrypt cookies data and update [WSBLib](
 - [0263f8c](https://github.com/firlast/mathiz/commit/0263f8c): Encrypt just cookie value;
 - [b7aa6b6](https://github.com/firlast/mathiz/commit/b7aa6b6): Decrypt received cookies;
 - [24555b6](https://github.com/firlast/mathiz/commit/24555b6): Creating `register_route` method to register routes.
+
+# 0.3.1
+
+Using `send_response` method to send client response.
+
+## Major commits
+
+- [00c6247](https://github.com/firlast/mathiz/commit/00c6247): Update `wsblib` version to 1.2.0;
+- [5a93934](https://github.com/firlast/mathiz/commit/5a93934): Using `send_response` to send client response.
