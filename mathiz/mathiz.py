@@ -2,7 +2,6 @@ import sys
 from threading import Thread
 from types import FunctionType
 
-from http_pyparser import response
 from wsblib import log, request, route, server
 
 from .encrypt import EncryptCookies
@@ -45,11 +44,8 @@ class Mathiz:
                 new_cookies = self._encrypt_cookies.encrypt(_response.cookies)
                 _response.cookies = new_cookies
 
-            final_response = response.make_response(_response)
-
+            request_processed.send_response(_response)
             log.log_request(_response, _request)
-            client.send_message(final_response)
-            client.destroy()
 
     def run(self, host: str = '127.0.0.1', port: int = 5500, use_globals: bool = True) -> None:
         print('Mathiz Framework started')
